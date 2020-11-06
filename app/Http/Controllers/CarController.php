@@ -12,7 +12,9 @@ class CarController extends Controller
 
     public function index()
     {
-        $cars = Car::all();
+        $cars = Car::query()
+            ->latest()
+            ->paginate(10);
 
         return view('cars.index', [
             'cars' => $cars

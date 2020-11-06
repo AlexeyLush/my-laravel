@@ -22,9 +22,11 @@
 
     <div>
 
+        @can('update', $car)
         <a href="{{ route('cars.edit', $car) }}">Редактировать</a>
+        @endcan
 
-
+        @can('delete', $car)
         <a href="{{ route('cars.destroy', $car) }}"
            onclick="event.preventDefault(); document.getElementById('delete-form').submit()">
             Удалить
@@ -32,7 +34,7 @@
         <form id="delete-form" action="{{ route('cars.destroy', $car) }}" method="post">
             @csrf @method('delete')
         </form>
-
+            @endcan
 
     </div>
 

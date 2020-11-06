@@ -4,9 +4,11 @@
 @section('content')
     <h1>Машины</h1>
 
+    @can('create', 'App\Models\Car')
     <p>
         <a href="{{ route('cars.create') }}">Добавить машину</a>
     </p>
+    @endcan
 
     @if($cars->isEmpty())
         <p>

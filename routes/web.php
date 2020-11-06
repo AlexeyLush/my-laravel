@@ -18,4 +18,12 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
+Route::middleware('auth')
+    ->group(function () {
+        // Тут проверка на авторизацию
+
+        Route::resource('posts', CarController::class)
+            ->except('index', 'show');
+    });
+
 Route::resource('cars', CarController::class);
