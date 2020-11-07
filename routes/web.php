@@ -26,4 +26,6 @@ Route::middleware('auth')
             ->except('index', 'show');
     });
 
+Route::get('/cars/download', [CarController::class, 'download'])->name('download');
 Route::resource('cars', CarController::class);
+

@@ -11,8 +11,22 @@ class Car extends Model
 
     protected $fillable = [
         'model',
+        'image_path',
         'color',
         'year',
         'engine',
     ];
+
+    function deleteImage() {
+
+        if (!$this->image_path)
+            return;
+
+        $file = storage_path('app/' . $this->image_path);
+
+        if (!file_exists($file))
+            return;
+
+        unlink($file);
+    }
 }

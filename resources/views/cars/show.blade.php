@@ -1,11 +1,18 @@
-<?php
-    $car = $car ?? null;
-?>
 
 @extends('layouts.main')
 
 @section('content')
+
+
+
+    @if($car->image_path)
+        <div>
+            <img style="max-width: 100%" src="{{ Storage::url($car->image_path) }}" alt="{{ $car->title }}">
+        </div>
+    @endif
+
     <h1>{{ $car->model }}</h1>
+
     <div class="">
         <span>Цвет: {{ $car->color }}</span>
     </div>
@@ -37,6 +44,12 @@
             @endcan
 
     </div>
+
+
+    <a href="{{ route('download', $car) }}">
+        Скачать
+    </a>
+
 
     <p>{{ $car->content }}</p>
 

@@ -7,9 +7,17 @@ $car = $car ?? null;
     <h1>{{ $car ? 'Редактировать машину' : 'Новый ' }}</h1>
 
 
-    <form action="{{ $car ? route('cars.update', $car) : route('cars.store') }}" method="post">
+    <form enctype="multipart/form-data" action="{{ $car ? route('cars.update', $car) : route('cars.store') }}" method="post">
         @csrf
         @if($car) @method('put') @endif
+
+        <div>
+            <label for="image">Изображение</label>
+        </div>
+
+        <div>
+            <input type="file" name="image" id="image" accept="image/*" />
+        </div>
 
         <div>
             <label for="model">Модель</label>
